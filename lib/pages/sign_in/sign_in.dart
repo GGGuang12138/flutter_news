@@ -28,12 +28,12 @@ class _SignInPageState extends State<SignInPage> {
       toastInfo(msg: '密码不正确');
       return;
     }
-    UserRequestEntity params = UserRequestEntity(
+    UserLoginRequestEntity params = UserLoginRequestEntity(
       username: _usernameController.value.text,
       password: duSHA256(_passwordController.value.text),
     );
 
-    UserResponseEntity res = await UserAPI.login(params: params);
+    UserLoginResponseEntity res = await UserAPI.login(params: params);
 
     print(res.accessToken);
     // 写本地 access_token , 不写全局，业务：离线登录
