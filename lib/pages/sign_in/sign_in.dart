@@ -3,7 +3,7 @@ import 'package:flutter_news/common/api/api.dart';
 import 'package:flutter_news/common/entity/entitys.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
-import 'package:flutter_news/common/widgets/toast.dart';
+import 'package:flutter_news/global.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key key}) : super(key: key);
@@ -20,22 +20,22 @@ class _SignInPageState extends State<SignInPage> {
 
   // 执行登录操作
   _handleSignIn() async {
-    if (!duIsPhone(_usernameController.value.text)) {
-      toastInfo(msg: '请正确输入手机号码');
-      return;
-    }
-    if (!duCheckStringLength(_passwordController.value.text, 6)) {
-      toastInfo(msg: '密码不正确');
-      return;
-    }
+    // if (!duIsPhone(_usernameController.value.text)) {
+    //   toastInfo(msg: '请正确输入手机号码');
+    //   return;
+    // }
+    // if (!duCheckStringLength(_passwordController.value.text, 6)) {
+    //   toastInfo(msg: '密码不正确');
+    //   return;
+    // }
     UserLoginRequestEntity params = UserLoginRequestEntity(
       username: _usernameController.value.text,
       password: duSHA256(_passwordController.value.text),
     );
 
-    UserLoginResponseEntity res = await UserAPI.login(params: params);
-
-    print(res.accessToken);
+    UserLoginResponseEntity userProfile = await UserAPI.login(params: params);
+    Global.saveProfile(userProfile); //持久化保存
+    print(userProfile.accessToken);
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
   }
