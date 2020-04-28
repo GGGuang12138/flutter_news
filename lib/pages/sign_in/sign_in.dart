@@ -28,16 +28,22 @@ class _SignInPageState extends State<SignInPage> {
     //   toastInfo(msg: '密码不正确');
     //   return;
     // }
-    UserLoginRequestEntity params = UserLoginRequestEntity(
-      username: _usernameController.value.text,
-      password: duSHA256(_passwordController.value.text),
-    );
+    // UserLoginRequestEntity params = UserLoginRequestEntity(
+    //   username: _usernameController.value.text,
+    //   password: duSHA256(_passwordController.value.text),
+    // );
 
-    UserLoginResponseEntity userProfile = await UserAPI.login(params: params);
-    Global.saveProfile(userProfile); //持久化保存
-    print(userProfile.accessToken);
+    // UserLoginResponseEntity userProfile = await UserAPI.login(params: params);
+    // Global.saveProfile(userProfile); //持久化保存
+    // print(userProfile.accessToken);
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
+
+    //跳转
+    Navigator.pushNamed(
+      context,
+      "/app",
+    );
   }
 
   // 跳转 注册界面

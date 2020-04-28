@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
@@ -11,10 +9,8 @@ class WelcomePage extends StatefulWidget {
   _WelcomePageState createState() => _WelcomePageState();
 }
 
-
-
 class _WelcomePageState extends State<WelcomePage> {
-    /// 页标题
+  /// 页标题
   Widget _buildPageHeadTitle() {
     return Container(
         padding: EdgeInsets.only(top: duSetHeight(200)),
@@ -40,11 +36,12 @@ class _WelcomePageState extends State<WelcomePage> {
         color: AppColors.primaryElement,
         shape: RoundedRectangleBorder(borderRadius: Radii.k6pxRadius),
         onPressed: () {
-                  Navigator.pushNamed(context, "/sign_in");
+          Navigator.pushNamed(context, "/sign_in");
         },
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     // 高度减去 顶部、底部 导航

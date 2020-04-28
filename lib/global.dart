@@ -36,7 +36,7 @@ class Global {
     // android 状态栏为透明的沉浸
     if (Platform.isAndroid) {
       SystemUiOverlayStyle systemUiOverlayStyle =
-          SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent,statusBarIconBrightness: Brightness.dark);
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     }
   }
